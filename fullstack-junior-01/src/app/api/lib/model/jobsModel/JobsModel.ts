@@ -10,6 +10,14 @@ export function getJobs(): IJob[] {
     }
 }
 
+export function getJobsByLevel(): IJob[] {
+    try {
+        return jobs;
+    } catch (error) {
+        throw new Error('Erro na leitura de jobs');
+    }
+}
+
 export function getJobById(id: number) {
     try {
         const job = jobs.find((job) => job.id === id)
@@ -20,7 +28,12 @@ export function getJobById(id: number) {
     }
 }
 
+export function postJobSubmit(person: IPerson) {
+    return `Thank you for your application, ${person.name}`
+}
+
 export const JobsModel = {
     getJobs,
     getJobById,
+    postJobSubmit,
 }
