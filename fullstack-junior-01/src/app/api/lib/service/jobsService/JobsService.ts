@@ -8,9 +8,11 @@ export function getJobs(): IJob[] {
 }
 
 export function getJobsByLevel(level: string): IJob[] {
-    const data = JobsService.getJobsByLevel(level);
+    const data = JobsService.getJobs();
     
-    return data;
+    const jobsJuniors = data.filter((job) => job.level === level);
+
+    return jobsJuniors;
 }
 
 export const JobsService = {
