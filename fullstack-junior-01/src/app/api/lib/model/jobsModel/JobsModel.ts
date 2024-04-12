@@ -10,6 +10,17 @@ export function getJobs(): IJob[] {
     }
 }
 
+export function getJobById(id: number) {
+    try {
+        const job = jobs.find((job) => job.id === id)
+
+        return job;
+    } catch (error) {
+        console.error(`Erro na leitura do arquivo ${error}`);
+    }
+}
+
 export const JobsModel = {
     getJobs,
+    getJobById,
 }
