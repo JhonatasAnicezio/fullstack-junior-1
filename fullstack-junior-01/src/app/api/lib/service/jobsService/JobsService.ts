@@ -1,14 +1,15 @@
+import { IJob } from "@/app/api/interface/IJob";
 import { JobsModel } from "../../model/jobsModel/JobsModel";
 
-export async function getJobs() {
-    const data = await JobsModel.getJobs();
+export function getJobs(): IJob[] {
+    const data = JobsModel.getJobs();
 
     return data;
 }
 
-export async function getJobsByLevel() {
-    const data = await JobsService.getJobs();
-
+export function getJobsByLevel(level: string): IJob[] {
+    const data = JobsService.getJobsByLevel(level);
+    
     return data;
 }
 
