@@ -1,11 +1,9 @@
-import { JobsModel } from "../../lib/model/jobsModel/JobsModel";
+import { JobsModel } from "../../model/jobsModel/JobsModel";
 
 export async function getJobs() {
-    try {
-        return await JobsModel.getJobs();
-    } catch (error) {
-        console.error(`Erro na leitura do arquivo ${error}`);
-    }
+    const data = await JobsModel.getJobs();
+
+    return data;
 }
 
 export const JobsService = {
