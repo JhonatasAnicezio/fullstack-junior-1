@@ -1,5 +1,6 @@
 import { IJob } from "@/app/api/interface/IJob";
 import { JobsModel } from "../../model/jobsModel/JobsModel";
+import { IPerson } from "@/app/api/interface/IPerson";
 
 export function getJobs(): IJob[] {
     const data = JobsModel.getJobs();
@@ -23,8 +24,25 @@ export function getJobById(id: number): IJob | null {
     } return null;
 }
 
+export function postJobSubmit({ name, age, city, phone, state }: IPerson) {
+    if (
+        typeof name !== 'string' ||
+        typeof age !== 'number' ||
+        typeof phone !== 'string' ||
+        typeof state !== 'string' ||
+        typeof city !== 'string'
+    ) {
+        return null;
+    } else {
+        const data = JobsModel.postJobSubmit({ name, age, city, phone, state });
+
+        return data;
+    }
+}
+
 export const JobsService = {
     getJobs,
     getJobsByLevel,
-    getJobById
+    getJobById,
+    postJobSubmit
 }
