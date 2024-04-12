@@ -1,7 +1,8 @@
 import { jobs } from "@/database/jobs";
 import { IPerson } from "../../../interface/IPerson";
+import { IJob } from "@/app/api/interface/IJob";
 
-export async function getJobs() {
+export function getJobs(): IJob[] {
     try {
         return jobs;
     } catch (error) {
@@ -9,9 +10,13 @@ export async function getJobs() {
     }
 }
 
-export async function getJobsByLevel(level: string) {
+export function getJobsByLevel(level: string): IJob[] {
     try {
-        const jobsJuniors = jobs.filter((job) => job.level === level)
+        const jobsJuniors = jobs.filter((job) => job.level === level);
+
+        if (!jobsJuniors) {
+            throw new Error('Job não encontrado para o nível especificado');
+        }
 
         return jobsJuniors;
     } catch (error) {
