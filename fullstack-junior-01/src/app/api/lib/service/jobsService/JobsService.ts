@@ -15,7 +15,16 @@ export function getJobsByLevel(level: string): IJob[] {
     return jobsJuniors;
 }
 
+export function getJobById(id: number): IJob | null {
+    const data = JobsModel.getJobById(id);
+
+    if (data) {
+        return data
+    } return null;
+}
+
 export const JobsService = {
     getJobs,
     getJobsByLevel,
+    getJobById
 }
